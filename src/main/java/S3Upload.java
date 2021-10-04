@@ -30,12 +30,8 @@ public class S3Upload {
     }
 
     private static String readFileContents() {
-        BufferedReader reader = null;
         String fileContents = "";
-        try {
-            reader = new BufferedReader(new FileReader(
-                    "C:\\<FMI2>"));
-
+        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\<FMI2>"))) {
             while (true) {
                 fileContents += reader.readLine();
                 if (fileContents == null || fileContents.equals("")) {
@@ -48,6 +44,4 @@ public class S3Upload {
 
         return fileContents;
     }
-
-
 }
